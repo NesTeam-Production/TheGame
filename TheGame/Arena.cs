@@ -1,4 +1,7 @@
-﻿namespace TheGame
+﻿using TheGame.Factories;
+using TheGame.Items;
+
+namespace TheGame
 {
     public class DuelArena
     {
@@ -19,7 +22,10 @@
         public async Task<ArenaResult> DuelAsync()
         {
             Console.WriteLine($"Player1: {Player1.Name}, Player2: {Player2.Name}");
-
+            var weapon = WeaponFactory.GetRandomWeapon();
+            Player1.PickUp(weapon);
+            Player2.PickUp(weapon);
+            Console.WriteLine($"Choosen weapon: {weapon}");
             DisplayRoundState();
 
             ArenaResult result = new(Winner: Player1, Loser: Player2);
