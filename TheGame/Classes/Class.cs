@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using TheGame.Classes;
 
 namespace TheGame
 {
@@ -20,6 +21,18 @@ namespace TheGame
         public override string ToString()
         {
             return Name;
+        }
+
+        public static Class GetRandomClass()
+        {
+            Random rnd = new();
+            var classes = new List<Class>()
+            {
+                new Fighter(),
+                new Rouge(),
+                new Wizard()
+            };
+            return classes[rnd.Next(classes.Count)];
         }
     }
 }
