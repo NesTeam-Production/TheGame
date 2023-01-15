@@ -17,7 +17,7 @@ namespace TheGame
                 Player.CreateRandom("Zoli"),
                 Player.CreateRandom("Kasnyik")
             };
-            new Weapon(1, "Knife", 1, Dice.d4, "Is sharp...");
+            new Weapon(1, "Knife", 1, Dice.d4, "Is very sharp...");
             Logger.LogBestStats(players);
         }
     }
