@@ -6,7 +6,7 @@ namespace TheGame
 {
     internal class Program
     {
-        public Random rnd = new Random();
+        public static Random rnd = new Random();
 
         private static void Main(string[] args)
         {
@@ -32,6 +32,9 @@ namespace TheGame
             }
 
             // Generate battle options
+            var player1 = players[rnd.Next(players.Count)];
+            var player2 = players.Except(new List<Player>() { player1 }).ToArray()[rnd.Next(players.Count() - 1)];
+            Console.WriteLine($"Player1: {player1.Name}, Player2: {player2.Name}");
         }
     }
 }
