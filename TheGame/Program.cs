@@ -25,16 +25,29 @@ namespace TheGame
             // Generate dummy weapons
             List<Weapon> weapons = WeaponFactory.GenerateWeapons();
             WeaponFactory.ZipWeapons();
-            Console.WriteLine("Weapons:");
-            foreach (var weapon in weapons)
-            {
-                Console.WriteLine(weapon);
-            }
 
+            var task = Task.Run(async () =>
+            {
+                try
+                {
+                    await StartAsync(players).ConfigureAwait(false);
+                }
+                catch (Exception ex)
+                {
+                    Logger.LogError(ex);
+                }
+            });
+            task.GetAwaiter().GetResult();
+        }
+
+        private static async Task StartAsync(List<Player> players)
+        {
             // Generate battle options
             var player1 = players[rnd.Next(players.Count)];
             var player2 = players.Except(new List<Player>() { player1 }).ToArray()[rnd.Next(players.Count() - 1)];
-            Console.WriteLine($"Player1: {player1.Name}, Player2: {player2.Name}");
+
+            DuelArena arena = new(player1, player2);
+            var results = await arena.DuelAsync();
         }
     }
 }
