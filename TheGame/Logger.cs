@@ -118,7 +118,7 @@ namespace TheGame
 
                 LogMagenta(sb.ToString());
             }
-
+            Console.WriteLine();
             if (bestINTplayers.Count() == 1)
             {
                 LogBlue($"Best INT player: {bestINTplayers.Single().Name} with {bestINT}.");
@@ -136,7 +136,6 @@ namespace TheGame
                 LogBlue(sb.ToString());
             }
 
-            Console.WriteLine();
             Console.WriteLine();
             if (bestWISplayers.Count() == 1)
             {
