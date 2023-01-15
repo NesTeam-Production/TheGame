@@ -50,6 +50,8 @@ namespace TheGame
 
             DuelArena arena = new(player1, player2);
             var results = await arena.DuelAsync();
+
+            Console.WriteLine($"THE WINNER IS : {results.Winner.Name} with {results.Winner.CurrentHP} HP.");
         }
     }
 }

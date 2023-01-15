@@ -14,6 +14,8 @@ namespace TheGame
         public string Name { get; private set; }
         public Class? Class { get; private set; }
         public int MaxHP { get; private set; }
+        public int CurrentHP { get; private set; }
+
         public int STR { get; private set; }
         public int STRModifier { get; private set; }
         public int INT { get; private set; }
@@ -50,6 +52,7 @@ namespace TheGame
             player.CHAModifier = Calculator.CalculateModifier(player.CHA);
 
             player.MaxHP = Calculator.CalculateMaxHP(player);
+            player.CurrentHP = player.MaxHP;
 
             return player;
         }
@@ -59,7 +62,17 @@ namespace TheGame
             return $"{Name} the {Class}: STR:{STR}, INT:{INT}, DEX:{DEX}, CON:{CON}, WIS:{WIS}, CHA:{CHA} | MaxHP:{MaxHP}";
         }
 
-        internal void PickUp(Weapon weapon)
+        public void AttackWithWeapon(Player enemy)
+        {
+            if (Holding is Weapon weapon)
+            {
+                var damage = weapon.RollDamage();
+                Console.WriteLine($"{Name} dealt {damage} damage to {enemy.Name}.");
+                enemy.CurrentHP -= damage;
+            }
+        }
+
+        public void PickUp(Weapon weapon)
         {
             Holding = weapon;
             Inventory.Add(weapon);
