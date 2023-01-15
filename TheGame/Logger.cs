@@ -185,5 +185,13 @@ namespace TheGame
         {
             Console.WriteLine("\n\n\n\n\n\n");
         }
+
+        internal static void LogList<T>(IEnumerable<T> items)
+        {
+            foreach (T item in items)
+            {
+                Console.WriteLine(item);
+            }
+        }
     }
 }

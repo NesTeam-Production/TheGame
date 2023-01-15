@@ -20,6 +20,8 @@ namespace TheGame
                 Player.CreateRandom("Zoli"),
                 Player.CreateRandom("Kasnyik")
             };
+
+            Logger.LogList(players);
             Logger.LogBestStats(players);
 
             // Generate dummy weapons
