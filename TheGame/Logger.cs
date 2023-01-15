@@ -84,24 +84,6 @@ namespace TheGame
             }
 
             Console.WriteLine();
-            if (bestINTplayers.Count() == 1)
-            {
-                LogBlue($"Best INT player: {bestINTplayers.Single().Name} with {bestINT}.");
-            }
-            else
-            {
-                StringBuilder sb = new StringBuilder();
-                sb.Append($"Best INT players are: {bestINTplayers.First().Name}");
-                foreach (var player in bestINTplayers.Skip(1))
-                {
-                    sb.Append(", " + player.Name);
-                }
-                sb.Append($" with {bestINT}.");
-
-                LogBlue(sb.ToString());
-            }
-
-            Console.WriteLine();
             if (bestDEXplayers.Count() == 1)
             {
                 LogGreen($"Best DEX player: {bestDEXplayers.Single().Name} with {bestDEX}.");
@@ -137,6 +119,24 @@ namespace TheGame
                 LogMagenta(sb.ToString());
             }
 
+            if (bestINTplayers.Count() == 1)
+            {
+                LogBlue($"Best INT player: {bestINTplayers.Single().Name} with {bestINT}.");
+            }
+            else
+            {
+                StringBuilder sb = new StringBuilder();
+                sb.Append($"Best INT players are: {bestINTplayers.First().Name}");
+                foreach (var player in bestINTplayers.Skip(1))
+                {
+                    sb.Append(", " + player.Name);
+                }
+                sb.Append($" with {bestINT}.");
+
+                LogBlue(sb.ToString());
+            }
+
+            Console.WriteLine();
             Console.WriteLine();
             if (bestWISplayers.Count() == 1)
             {
