@@ -8,7 +8,7 @@ namespace TheGame.Classes
 {
     internal class Fighter : Class
     {
-        public Fighter() : base(nameof(Fighter))
+        public Fighter() : base(nameof(Fighter), Dice.d10)
         {
         }
 

@@ -8,7 +8,7 @@ namespace TheGame.Classes
 {
     internal class Wizard : Class
     {
-        public Wizard() : base(nameof(Wizard))
+        public Wizard() : base(nameof(Wizard), Dice.d6)
         {
         }
 

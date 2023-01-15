@@ -6,14 +6,16 @@ using System.Threading.Tasks;
 
 namespace TheGame
 {
-    public class Class
+    public abstract class Class
     {
-        public Class(string name)
+        public Class(string name, Dice hitDie)
         {
             Name = name;
+            HitDie = hitDie;
         }
 
         public string Name { get; set; }
+        public Dice HitDie { get; set; }
 
         public override string ToString()
         {
