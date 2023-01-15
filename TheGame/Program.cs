@@ -1,13 +1,15 @@
 ﻿using TheGame.Classes;
+using TheGame.Factories;
 using TheGame.Items;
 
 namespace TheGame
 {
     internal class Program
     {
+        public Random rnd = new Random();
+
         private static void Main(string[] args)
         {
-            Random rnd = new Random();
             List<Player> players = new List<Player>()
             {
                 Player.CreateRandom("Szpoti"),
@@ -17,7 +19,15 @@ namespace TheGame
                 Player.CreateRandom("Zoli"),
                 Player.CreateRandom("Kasnyik")
             };
-            new Weapon(1, "Knife", 1, Dice.d4, "Is very sharp...");
+            List<Weapon> weapons = WeaponFactory.GenerateWeapons();
+            WeaponFactory.ZipWeapons();
+
+            Console.WriteLine("Weapons:");
+            foreach (var weapon in weapons)
+            {
+                Console.WriteLine(weapon);
+            }
+
             Logger.LogBestStats(players);
         }
     }

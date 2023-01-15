@@ -15,5 +15,10 @@
         {
             return Dices.Roll(DiceAmount, DamageDice);
         }
+
+        public override string ToString()
+        {
+            return Name;
+        }
     }
 }
