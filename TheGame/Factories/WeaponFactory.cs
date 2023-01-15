@@ -18,7 +18,7 @@ namespace TheGame.Factories
 
         public static List<Weapon> GetWeapons() => ReadWeaponsFromFile();
 
-        internal static void GenerateWeapon(int id, string name, int amountDice, Dice damageDice, string description = "")
+        public static void GenerateWeapon(int id, string name, int amountDice, Dice damageDice, string description = "")
         {
             Weapon weapon = new(id, name, amountDice, damageDice, description);
             Weapons.Add(weapon);
@@ -39,12 +39,24 @@ namespace TheGame.Factories
 
         private static List<Weapon> ReadWeaponsFromFile()
         {
-            string json = File.ReadAllText(Path.Combine(WeaponsFilePath, "Weapons.json"));
-
-            return JsonConvert.DeserializeObject<List<Weapon>>(json);
+            try
+            {
+                string json = File.ReadAllText(Path.Combine(WeaponsFilePath, "Weapons.json"));
+                List<Weapon>? weapons = JsonConvert.DeserializeObject<List<Weapon>>(json);
+                if (weapons is null)
+                {
+                    throw new NullReferenceException($"Weapons list from file was null.");
+                }
+                return weapons;
+            }
+            catch (Exception exc)
+            {
+                Logger.LogError(exc);
+                return new List<Weapon>();
+            }
         }
 
-        internal static void ZipWeapons()
+        public static void ZipWeapons()
         {
             string json = JsonConvert.SerializeObject(Weapons);
             if (!Directory.Exists(WeaponsFilePath))
@@ -56,12 +68,18 @@ namespace TheGame.Factories
             File.WriteAllText(path, json);
         }
 
-        internal static List<Weapon> GenerateWeapons()
+        public static List<Weapon> GenerateWeapons()
         {
             GenerateWeapon(1, "Knife", 1, Dice.d4, "Is very sharp...");
             GenerateWeapon(2, "Shortsword", 1, Dice.d6, "Is even sharper...");
             GenerateWeapon(3, "Longsword", 1, Dice.d8, "The sharpest...");
             return Weapons.ToList();
+        }
+
+        public static Weapon GetRandomWeapon()
+        {
+            Random rnd = new();
+            return Weapons.ToArray()[rnd.Next(Weapons.Count)];
         }
     }
 }
