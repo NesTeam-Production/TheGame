@@ -10,6 +10,7 @@ namespace TheGame
 
         private static void Main(string[] args)
         {
+            // Genereate dummy players
             List<Player> players = new List<Player>()
             {
                 Player.CreateRandom("Szpoti"),
@@ -19,16 +20,18 @@ namespace TheGame
                 Player.CreateRandom("Zoli"),
                 Player.CreateRandom("Kasnyik")
             };
+            Logger.LogBestStats(players);
+
+            // Generate dummy weapons
             List<Weapon> weapons = WeaponFactory.GenerateWeapons();
             WeaponFactory.ZipWeapons();
-
             Console.WriteLine("Weapons:");
             foreach (var weapon in weapons)
             {
                 Console.WriteLine(weapon);
             }
 
-            Logger.LogBestStats(players);
+            // Generate battle options
         }
     }
 }
