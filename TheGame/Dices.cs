@@ -23,13 +23,7 @@ namespace TheGame
 
         public static void ShowResult(List<int> dices)
         {
-            StringBuilder sb = new StringBuilder();
-            sb.Append(dices.First().ToString());
-            foreach (var d in dices.Skip(1))
-            {
-                sb.Append("," + d.ToString());
-            }
-            Console.WriteLine(sb.ToString());
+            Console.WriteLine(string.Join(", ", dices));
         }
 
         internal static int Roll(int diceAmount, Dice damageDice)
