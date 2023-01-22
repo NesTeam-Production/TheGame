@@ -18,7 +18,8 @@ namespace TheGame
                 Player.CreateRandom("Máté"),
                 Player.CreateRandom("Balogh"),
                 Player.CreateRandom("Zoli"),
-                Player.CreateRandom("Kasnyik")
+                Player.CreateRandom("Kasnyik"),
+                Player.CreateRandom("Gréti")
             };
 
             Logger.LogList(players);

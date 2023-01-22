@@ -27,20 +27,17 @@ namespace TheGame
             Player1.PickUp(weapon);
             Player2.PickUp(weapon);
 
-            await Task.Run(() =>
+            return await Task.Run(() =>
             {
-                FightUntilDeath();
+                var result = FightUntilDeath(Player1, Player2);
+                return result;
             });
-
-            Player winner = Player1.CurrentHP >= 0 ? Player1 : Player2;
-            Player looser = Player1.CurrentHP >= 0 ? Player2 : Player1;
-
-            ArenaResult result = new(Winner: winner, Loser: looser);
-            return result;
         }
 
-        private void FightUntilDeath()
+        private ArenaResult FightUntilDeath(Player player1, Player player2)
         {
+            Player winner;
+            Player looser;
             while (Player1.CurrentHP >= 0 && Player2.CurrentHP >= 0)
             {
                 DisplayRoundState();
@@ -48,10 +45,15 @@ namespace TheGame
                 Player1.AttackWithWeapon(Player2);
                 if (Player2.CurrentHP <= 0)
                 {
-                    break;
+                    winner = Player1;
+                    looser = Player2;
+                    return new(Winner: winner, Loser: looser);
                 }
                 Player2.AttackWithWeapon(Player1);
             }
+            winner = player2;
+            looser = player1;
+            return new(Winner: winner, Loser: looser);
         }
 
         private void DisplayRoundState()
