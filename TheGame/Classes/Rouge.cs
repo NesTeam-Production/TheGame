@@ -8,7 +8,7 @@ namespace TheGame.Classes
 {
     internal class Rouge : Class
     {
-        public Rouge() : base(nameof(Rouge))
+        public Rouge() : base(nameof(Rouge), Dice.d8)
         {
         }
 

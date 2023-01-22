@@ -1,4 +1,5 @@
 ﻿using System.Text;
+using static System.Net.Mime.MediaTypeNames;
 
 namespace TheGame
 {
@@ -43,6 +44,13 @@ namespace TheGame
         {
             Console.ForegroundColor = ConsoleColor.Cyan;
             Console.WriteLine(text);
+            Console.ResetColor();
+        }
+
+        public static void LogError(Exception exc)
+        {
+            Console.ForegroundColor = ConsoleColor.DarkRed;
+            Console.WriteLine(exc);
             Console.ResetColor();
         }
 
@@ -176,6 +184,14 @@ namespace TheGame
         public static void LogBIG()
         {
             Console.WriteLine("\n\n\n\n\n\n");
+        }
+
+        internal static void LogList<T>(IEnumerable<T> items)
+        {
+            foreach (T item in items)
+            {
+                Console.WriteLine(item);
+            }
         }
     }
 }

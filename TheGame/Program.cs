@@ -6,10 +6,11 @@ namespace TheGame
 {
     internal class Program
     {
-        public Random rnd = new Random();
+        public static Random rnd = new Random();
 
         private static void Main(string[] args)
         {
+            // Genereate dummy players
             List<Player> players = new List<Player>()
             {
                 Player.CreateRandom("Szpoti"),
@@ -17,18 +18,41 @@ namespace TheGame
                 Player.CreateRandom("Máté"),
                 Player.CreateRandom("Balogh"),
                 Player.CreateRandom("Zoli"),
-                Player.CreateRandom("Kasnyik")
+                Player.CreateRandom("Kasnyik"),
+                Player.CreateRandom("Gréti")
             };
+
+            Logger.LogList(players);
+            Logger.LogBestStats(players);
+
+            // Generate dummy weapons
             List<Weapon> weapons = WeaponFactory.GenerateWeapons();
             WeaponFactory.ZipWeapons();
 
-            Console.WriteLine("Weapons:");
-            foreach (var weapon in weapons)
+            var task = Task.Run(async () =>
             {
-                Console.WriteLine(weapon);
-            }
+                try
+                {
+                    await StartAsync(players).ConfigureAwait(false);
+                }
+                catch (Exception ex)
+                {
+                    Logger.LogError(ex);
+                }
+            });
+            task.GetAwaiter().GetResult();
+        }
 
-            Logger.LogBestStats(players);
+        private static async Task StartAsync(List<Player> players)
+        {
+            // Generate battle options
+            var player1 = players[rnd.Next(players.Count)];
+            var player2 = players.Except(new List<Player>() { player1 }).ToArray()[rnd.Next(players.Count() - 1)];
+
+            DuelArena arena = new(player1, player2);
+            var results = await arena.DuelAsync();
+
+            Console.WriteLine($"THE WINNER IS : {results.Winner.Name} with {results.Winner.CurrentHP} HP.");
         }
     }
 }

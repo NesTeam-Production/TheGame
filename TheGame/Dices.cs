@@ -26,9 +26,9 @@ namespace TheGame
             Console.WriteLine(string.Join(", ", dices));
         }
 
-        internal static int Roll(int diceAmount, Dice damageDice)
+        internal static int Roll(int diceAmount, Dice die)
         {
-            return Enumerable.Repeat(rnd.Next(1, (int)damageDice + 1), diceAmount).Sum();
+            return Enumerable.Repeat(rnd.Next(1, (int)die + 1), diceAmount).Sum();
         }
     }
 
