@@ -10,6 +10,13 @@ namespace TheGame
 
         private static void Main(string[] args)
         {
+            List<string> strings = new List<string>()
+            {
+                "this",
+                "and",
+                "that"
+            };
+
             // Genereate dummy players
             List<Player> players = new List<Player>()
             {
@@ -19,7 +26,8 @@ namespace TheGame
                 Player.CreateRandom("Balogh"),
                 Player.CreateRandom("Zoli"),
                 Player.CreateRandom("Kasnyik"),
-                Player.CreateRandom("Gréti")
+                Player.CreateRandom("Gréti"),
+                Player.CreateRandom("Gergő")
             };
 
             Logger.LogList(players);

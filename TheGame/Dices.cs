@@ -28,7 +28,12 @@ namespace TheGame
 
         internal static int Roll(int diceAmount, Dice die)
         {
-            return Enumerable.Repeat(rnd.Next(1, (int)die + 1), diceAmount).Sum();
+            var arr = new List<int>();
+            for (int i = 0; i < diceAmount; i++)
+            {
+                arr.Add(rnd.Next(1, (int)die + 1));
+            }
+            return arr.Sum();
         }
     }
 

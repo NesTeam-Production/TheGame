@@ -10,7 +10,7 @@ namespace TheGame
             Name = name;
         }
 
-        public int Level { get; private set; } = 1;
+        public int Level { get; private set; } = 5;
         public string Name { get; private set; }
         public Class? Class { get; private set; }
         public int MaxHP { get; private set; }
@@ -59,7 +59,7 @@ namespace TheGame
 
         public override string ToString()
         {
-            return $"{Name} the {Class}: STR:{STR}, INT:{INT}, DEX:{DEX}, CON:{CON}, WIS:{WIS}, CHA:{CHA} | MaxHP:{MaxHP}";
+            return $"{Name} the {Class}: STR:{STR}, DEX:{DEX}, CON:{CON}, WIS:{WIS}, INT:{INT}, CHA:{CHA} | MaxHP:{MaxHP}";
         }
 
         public void AttackWithWeapon(Player enemy)

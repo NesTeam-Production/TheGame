@@ -13,7 +13,7 @@ namespace TheGame.Factories
 {
     public static class WeaponFactory
     {
-        private static readonly string WeaponsFilePath = Path.Combine(Common.GetWorkingDirectory(), "Weapons");
+        private static readonly string WeaponsFilePath = Path.Combine(Common.GetWorkingDirectory(), "..", "Weapons");
         private static HashSet<Weapon> Weapons { get; set; } = new();
 
         public static List<Weapon> GetWeapons() => ReadWeaponsFromFile();
