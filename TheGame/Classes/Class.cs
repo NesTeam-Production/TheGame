@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using TheGame.Classes;
+﻿using TheGame.Classes;
 
 namespace TheGame
 {
@@ -34,5 +29,12 @@ namespace TheGame
             };
             return classes[rnd.Next(classes.Count)];
         }
+    }
+
+    public enum ClassList
+    {
+        Fighter,
+        Rouge,
+        Wizard
     }
 }
