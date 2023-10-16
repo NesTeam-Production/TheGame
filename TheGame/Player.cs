@@ -1,5 +1,5 @@
-﻿using TheGame.Classes;
-using TheGame.Items;
+﻿using TheGame.Items;
+using TheGame.Races;
 
 namespace TheGame
 {
@@ -12,7 +12,19 @@ namespace TheGame
 
         public int Level { get; private set; } = 1;
         public string Name { get; private set; }
-        public Class? Class { get; private set; }
+
+        public Race Race
+        {
+            get { return Race; }
+            set { SetRace(value); }
+        }
+
+        public Class Class
+        {
+            get { return Class; }
+            set { SetClass(value); }
+        }
+
         public int MaxHP { get; private set; }
         public int CurrentHP { get; private set; }
 
@@ -31,7 +43,7 @@ namespace TheGame
         public Item? Holding { get; private set; }
         public List<Item> Inventory { get; private set; } = new List<Item>();
 
-        internal static Player CreateRandom(string name)
+        public static Player CreateRandom(string name)
         {
             var player = new Player(name)
             {
@@ -41,7 +53,8 @@ namespace TheGame
                 CON = Dices.RollAbility(4).OrderByDescending(x => x).Take(3).Sum(),
                 WIS = Dices.RollAbility(4).OrderByDescending(x => x).Take(3).Sum(),
                 CHA = Dices.RollAbility(4).OrderByDescending(x => x).Take(3).Sum(),
-                Class = Class.GetRandomClass()
+                Class = Class.GetRandomClass(),
+                Race = Race.GetRandomRace()
             };
 
             player.STRModifier = Calculator.CalculateModifier(player.STR);
@@ -55,6 +68,16 @@ namespace TheGame
             player.CurrentHP = player.MaxHP;
 
             return player;
+        }
+
+        private void SetRace(Race race)
+        {
+            Race = race;
+        }
+
+        private void SetClass(Class value)
+        {
+            Class = value;
         }
 
         public override string ToString()
