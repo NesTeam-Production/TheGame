@@ -19,4 +19,8 @@
             throw new NotImplementedException();
         }
     }
+    public enum RaceList
+    {
+        Human
+    }
 }
