@@ -10,5 +10,5 @@ namespace TheGame
         {
             CharacterFactory.CreateCharacter();
         }
-        }
     }
+}
