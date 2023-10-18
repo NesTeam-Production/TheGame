@@ -56,23 +56,23 @@ namespace TheGame
 
         public static void LogBestStats(List<Player> players)
         {
-            var bestSTR = players.Select(p => p.STR).Max();
-            var bestSTRplayers = players.Where(p => p.STR == bestSTR);
+            var bestSTR = players.Select(p => p.Strength).Max();
+            var bestSTRplayers = players.Where(p => p.Strength == bestSTR);
 
-            var bestINT = players.Select(p => p.INT).Max();
-            var bestINTplayers = players.Where(p => p.INT == bestINT);
+            var bestINT = players.Select(p => p.Intelligence).Max();
+            var bestINTplayers = players.Where(p => p.Intelligence == bestINT);
 
-            var bestDEX = players.Select(p => p.DEX).Max();
-            var bestDEXplayers = players.Where(p => p.DEX == bestDEX);
+            var bestDEX = players.Select(p => p.Dexterity).Max();
+            var bestDEXplayers = players.Where(p => p.Dexterity == bestDEX);
 
-            var bestCON = players.Select(p => p.CON).Max();
-            var bestCONplayers = players.Where(p => p.CON == bestCON);
+            var bestCON = players.Select(p => p.Constitution).Max();
+            var bestCONplayers = players.Where(p => p.Constitution == bestCON);
 
-            var bestWIS = players.Select(p => p.WIS).Max();
-            var bestWISplayers = players.Where(p => p.WIS == bestWIS);
+            var bestWIS = players.Select(p => p.Wisdom).Max();
+            var bestWISplayers = players.Where(p => p.Wisdom == bestWIS);
 
-            var bestCHA = players.Select(p => p.CHA).Max();
-            var bestCHAplayers = players.Where(p => p.CHA == bestCHA);
+            var bestCHA = players.Select(p => p.Charisma).Max();
+            var bestCHAplayers = players.Where(p => p.Charisma == bestCHA);
 
             if (bestSTRplayers.Count() == 1)
             {
