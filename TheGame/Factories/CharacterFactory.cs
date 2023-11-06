@@ -5,7 +5,7 @@ namespace TheGame.Factories
 {
     public static class CharacterFactory
     {
-        public static void CreateCharacter()
+        public static void CreateNPC()
         {
             int level = ChooseLevel();
             Class choosenClass = ChooseClass();
@@ -98,6 +98,12 @@ namespace TheGame.Factories
                 return choosenRace switch
                 {
                     RaceList.Human => new Human(),
+                    RaceList.Elf => new Elf(),
+                    RaceList.HalfElf => new HalfElf(),
+                    RaceList.Dwarf => new Dwarf(),
+                    RaceList.HalfOrc => new HalfOrc(),
+                    RaceList.Tiefling => new Tiefling(),
+                    RaceList.Gnome => new Gnome(),
                     _ => throw new InvalidOperationException(),
                 };
             }

@@ -19,8 +19,15 @@
             throw new NotImplementedException();
         }
     }
+
     public enum RaceList
     {
-        Human
+        Human,
+        Elf,
+        HalfElf,
+        Dwarf,
+        HalfOrc,
+        Tiefling,
+        Gnome
     }
 }

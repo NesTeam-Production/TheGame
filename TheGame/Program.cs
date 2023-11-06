@@ -8,7 +8,7 @@ namespace TheGame
 
         private static void Main(string[] args)
         {
-            CharacterFactory.CreateCharacter();
+            CharacterFactory.CreateNPC();
         }
     }
 }
